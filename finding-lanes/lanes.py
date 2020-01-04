@@ -9,9 +9,11 @@ def canny(image):
 
 def region_of_interest(image):
     height = image.shape[0]
-    triange = np.array([(200, height), (1100, height), (550, 250)])
+    polygons = np.array([
+        [(200, height), (1100, height), (550, 250)]
+        ])
     mask = np.zeros_like(image)
-    cv2.fillPoly(mask, triangle, 255)
+    cv2.fillPoly(mask, polygons, 255)
     return mask
 
 image = cv2.imread('test_image.jpg')
